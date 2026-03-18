@@ -4,46 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    emoji: '\u{1F4DD}',
+    title: '기록하는 개발',
+    description:
+      '배운 것을 문서로 정리하고, 나만의 지식 베이스를 쌓아갑니다. 기록은 가장 확실한 학습 방법입니다.',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    emoji: '\u{1F680}',
+    title: '꾸준한 성장',
+    description:
+      '작은 것이라도 매일 조금씩 발전하는 것을 목표로 합니다. 블로그는 그 여정의 발자취입니다.',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    emoji: '\u{1F4E1}',
+    title: '지식 공유',
+    description:
+      '삽질했던 경험, 해결했던 문제들을 공유합니다. 누군가에게 도움이 되는 글을 쓰고 싶습니다.',
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({emoji, title, description}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCard}>
+        <span className={styles.featureEmoji}>{emoji}</span>
+        <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
+        <p className={styles.featureDescription}>{description}</p>
       </div>
     </div>
   );
