@@ -13,10 +13,10 @@ function HomepageHeader() {
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
         <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link className={styles.heroButtonSolid} to="/docs/intro">
+          <Link className={styles.heroButtonPrimary} to="/docs/intro">
             Docs 보러가기
           </Link>
-          <Link className={styles.heroButton} to="/blog">
+          <Link className={styles.heroButtonSecondary} to="/blog">
             Blog 읽기
           </Link>
         </div>
