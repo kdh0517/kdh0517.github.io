@@ -26,7 +26,7 @@ function ProfileSidebar() {
     <aside className={styles.sidebar}>
       <div className={styles.profileImageWrapper}>
         <img
-          src="/img/profile.jpg"
+          src="/img/profile.jpeg"
           alt="Profile"
           className={styles.profileImage}
           onError={(e) => {
