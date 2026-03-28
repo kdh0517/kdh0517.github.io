@@ -52,6 +52,7 @@ html {
 
 .navbar__title {
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 article {
@@ -91,4 +92,9 @@ code {
 
 [data-theme='dark'] .footer--dark {
   background: #0a0f1a;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
 }
