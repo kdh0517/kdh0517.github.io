@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'DongHyeon Dev',
-  tagline: '배우고, 기록하고, 성장하는 개발 블로그',
-  favicon: 'img/favicon.ico',
+  title: 'DongHyeon Kang',
+  tagline: 'A developer learning, building, and sharing along the way.',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -26,6 +26,7 @@ const config = {
   projectName: 'kdh0517.github.io',
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -42,7 +43,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/kdh0517/kdh0517.github.io/tree/master/',
+          editUrl: 'https://github.com/kdh0517/kdh0517.github.io/tree/main/',
         },
         blog: {
           showReadingTime: true,
@@ -50,7 +51,7 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/kdh0517/kdh0517.github.io/tree/master/',
+          editUrl: 'https://github.com/kdh0517/kdh0517.github.io/tree/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -65,18 +66,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/profile.jpeg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'DongHyeon Dev',
-        logo: {
-          alt: 'DongHyeon Dev Logo',
-          src: 'img/logo.svg',
-        },
+        title: 'DongHyeon Kang',
         items: [
+          {to: '/', label: 'About', position: 'left', activeBaseRegex: '^/$'},
+          {href: '/#publications', label: 'Publications', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
@@ -92,32 +92,18 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
-            title: 'Content',
-            items: [
-              {
-                label: 'Docs',
-                to: '/docs/intro',
-              },
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-            ],
+            label: 'GitHub',
+            href: 'https://github.com/kdh0517',
           },
           {
-            title: 'Links',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/kdh0517',
-              },
-            ],
+            label: 'Blog',
+            to: '/blog',
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} DongHyeon. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} DongHyeon Kang. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

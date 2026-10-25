@@ -1,45 +1,42 @@
-<<<<<<< HEAD
-# donghyeon.github.io
-=======
-# Website
+# DongHyeon Kang — Personal Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+An English personal website built with Docusaurus and hosted on GitHub Pages at
+[kang.me.kr](https://kang.me.kr/).
 
-## Installation
+## Development
 
-```bash
-yarn
-```
-
-## Local Development
+Requires Node.js 20 or later.
 
 ```bash
-yarn start
+npm ci
+npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
+Open http://localhost:3000. To preview a production build:
 
 ```bash
-yarn build
+npm run build
+npm run serve
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Updating content
+
+- `src/data/profile.js`: name, role, location, GitHub, optional email, interests,
+  and news. Dates for news use `YYYY-MM`. An empty news list hides the section.
+- `src/data/publications.js`: paper titles, authors in published order, venues,
+  DOI links, and videos. The `self` field highlights your name.
+- `src/pages/index.js`: English introduction and homepage sections.
+- `src/pages/index.module.css`: profile, homepage layout, and mobile styling.
+- `src/css/custom.css`: shared typography, colors, navigation, and footer.
+- `static/img/profile.jpeg`: profile photograph.
+- `docs/` and `blog/`: documentation and blog content. These currently include
+  the original Docusaurus sample content.
+
+Set `profile.email` to a real address to show the Email link. Leave it `null`
+to hide the link. Add only verified personal details and news.
 
 ## Deployment
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
->>>>>>> e4b5ac6 (real init)
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the
+site and publishes the `build/` directory to the `gh-pages` branch.
+`static/CNAME` preserves the `kang.me.kr` custom domain.

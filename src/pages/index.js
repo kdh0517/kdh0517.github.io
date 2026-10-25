@@ -1,137 +1,160 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
-
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {news, profile} from '../data/profile';
+import {publications} from '../data/publications';
 import styles from './index.module.css';
 
-const NEWS_ITEMS = [
-  // { date: 'Mar 2026', text: 'Started this website!', bold: false },
-];
+function Icon({name}) {
+  const paths = {
+    location: <><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
+    github: <><path d="M9 19c-4.3 1.3-4.3-2-6-2.5M15 22v-3.4a3 3 0 0 0-.8-2.4c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 18.5 7a4.3 4.3 0 0 0-.1-3.2S17.4 3.5 15 5a11 11 0 0 0-6 0C6.6 3.5 5.6 3.8 5.6 3.8A4.3 4.3 0 0 0 5.5 7a4.7 4.7 0 0 0-1.3 3.3c0 4.6 2.9 5.6 5.6 5.9a3 3 0 0 0-.8 2.4V22" /></>,
+    email: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></>,
+  };
 
-const SOCIAL_LINKS = [
-  {
-    icon: '🔗',
-    label: 'GitHub',
-    href: 'https://github.com/kdh0517',
-  },
-  {
-    icon: '✉️',
-    label: 'Email',
-    href: 'mailto:your-email@example.com',
-  },
-];
+  return (
+    <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {paths[name]}
+    </svg>
+  );
+}
 
 function ProfileSidebar() {
   return (
-    <aside className={styles.sidebar}>
-      <div className={styles.profileImageWrapper}>
-        <img
-          src="/img/profile.jpeg"
-          alt="Profile"
-          className={styles.profileImage}
-          onError={(e) => {
-            e.target.style.display = 'none';
-          }}
-        />
-      </div>
-      <h2 className={styles.profileName}>DongHyeon Kang</h2>
-      <p className={styles.profileTitle}>Developer</p>
-      <p className={styles.profileLocation}>South Korea</p>
-
-      <div className={styles.socialLinks}>
-        {SOCIAL_LINKS.map((link, idx) => (
-          <a
-            key={idx}
-            href={link.href}
-            className={styles.socialLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className={styles.socialIcon}>{link.icon}</span>
-            {link.label}
-          </a>
-        ))}
+    <aside className={styles.sidebar} aria-label="Profile">
+      <img
+        src={useBaseUrl('/img/profile.jpeg')}
+        alt={profile.name}
+        width="180"
+        height="180"
+        className={styles.profileImage}
+        fetchPriority="high"
+      />
+      <div className={styles.profileDetails}>
+        <h2 className={styles.profileName}>{profile.name}</h2>
+        <p className={styles.profileRole}>{profile.role}</p>
+        <ul className={styles.profileLinks}>
+          <li><Icon name="location" /><span>{profile.location}</span></li>
+          <li><Icon name="github" /><a href={profile.github}>GitHub</a></li>
+          {profile.email && (
+            <li><Icon name="email" /><a href={`mailto:${profile.email}`}>Email</a></li>
+          )}
+        </ul>
       </div>
     </aside>
   );
 }
 
-function AboutSection() {
-  return (
-    <section className={styles.section}>
-      <h2 className={styles.sectionTitle}>About</h2>
-      <p className={styles.aboutText}>
-        안녕하세요! 배우고, 기록하고, 성장하는 개발자 강동현입니다.
-        이 블로그에서는 개발하면서 배운 것들을 정리하고 공유합니다.
-        기록은 가장 확실한 학습 방법이라 믿고, 꾸준히 글을 쓰고 있습니다.
-      </p>
-      <p className={styles.aboutText}>
-        관심 분야는 웹 개발, 소프트웨어 엔지니어링 등 다양합니다.
-        궁금한 점이 있으시면 언제든 연락 주세요!
-      </p>
-    </section>
-  );
-}
-
 function NewsSection() {
-  if (NEWS_ITEMS.length === 0) return null;
+  if (news.length === 0) return null;
 
   return (
-    <section className={styles.section}>
-      <h2 className={styles.sectionTitle}>Latest News</h2>
-      <div className={styles.newsDivider} />
-      <div className={styles.newsTable}>
-        {NEWS_ITEMS.map((item, idx) => (
-          <div key={idx} className={styles.newsRow}>
-            <span className={styles.newsDate}>{item.date}</span>
-            <span className={item.bold ? styles.newsBoldText : styles.newsText}>
-              {item.text}
-            </span>
-          </div>
+    <section className={styles.section} aria-labelledby="latest-news">
+      <Heading as="h2" id="latest-news" className={styles.sectionTitle}>Latest News</Heading>
+      <ul className={styles.newsList}>
+        {news.map((item) => (
+          <li key={`${item.date}-${item.text}`} className={styles.newsItem}>
+            <time dateTime={item.date}>
+              {new Intl.DateTimeFormat('en', {month: 'short', year: 'numeric', timeZone: 'UTC'}).format(new Date(`${item.date}-01T00:00:00Z`))}
+            </time>
+            <span>{item.text}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
 
-function QuickLinks() {
+function PublicationsSection() {
   return (
-    <section className={styles.section}>
-      <h2 className={styles.sectionTitle}>Explore</h2>
-      <div className={styles.newsDivider} />
-      <div className={styles.quickLinks}>
-        <Link to="/docs/intro" className={styles.quickLink}>
-          <span className={styles.quickLinkIcon}>📚</span>
-          <div>
-            <strong>Docs</strong>
-            <p>정리된 문서와 가이드를 확인하세요</p>
-          </div>
-        </Link>
-        <Link to="/blog" className={styles.quickLink}>
-          <span className={styles.quickLinkIcon}>✏️</span>
-          <div>
-            <strong>Blog</strong>
-            <p>개발 경험과 학습 기록을 읽어보세요</p>
-          </div>
-        </Link>
-      </div>
+    <section className={styles.section} aria-labelledby="publications">
+      <Heading as="h2" id="publications" className={styles.sectionTitle}>Publications</Heading>
+      <ol className={styles.publications}>
+        {publications.map((paper) => (
+          <li key={paper.id} className={styles.publication}>
+            <a href={paper.video} className={styles.publicationImageLink} aria-label={`Watch the research video for ${paper.title}`}>
+              <img src={paper.thumbnail} alt={`${paper.title} — video thumbnail`} width="320" height="180" loading="lazy" decoding="async" className={styles.publicationImage} />
+            </a>
+            <div className={styles.publicationBody}>
+              <p className={styles.publicationVenue}>{paper.venue}</p>
+              <h3 className={styles.publicationTitle}>
+                <a href={`https://doi.org/${paper.doi}`}>{paper.title}</a>
+              </h3>
+              <p className={styles.publicationAuthors}>
+                {paper.authors.map((author, index) => (
+                  <span key={author.name}>
+                    {index > 0 && ', '}
+                    {author.self ? <strong>{author.name}</strong> : author.name}
+                  </span>
+                ))}
+              </p>
+              <p className={styles.publicationDetails}>{paper.details}</p>
+              <p className={styles.publicationSummary}>{paper.summary}</p>
+              <ul className={styles.publicationLinks} aria-label={`Resources for ${paper.title}`}>
+                <li><a href={`https://doi.org/${paper.doi}`}>[paper]</a></li>
+                <li><a href={paper.video}>[video]</a></li>
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title="Home" description={siteConfig.tagline}>
+    <Layout title="About" description="DongHyeon Kang — developer and co-author of EcoTailor (PACM IMWUT 2026) and CapWear (ACM ISWC 2026). Publications and notes on learning and building.">
       <main className={styles.mainContainer}>
-        <div className={styles.contentWrapper}>
-          <ProfileSidebar />
-          <div className={styles.mainContent}>
-            <AboutSection />
-            <NewsSection />
-            <QuickLinks />
-          </div>
-        </div>
+        <ProfileSidebar />
+        <article className={styles.mainContent}>
+          <section className={styles.section} aria-labelledby="about">
+            <Heading as="h1" id="about" className={styles.pageTitle}>About Me</Heading>
+            <p>
+              Hello! I’m <strong>{profile.name}</strong>, a developer based in South Korea.
+              I enjoy learning, building, and sharing what I discover along the way.
+            </p>
+            <p>
+              My interests include <strong>web development</strong> and{' '}
+              <strong>software engineering</strong>. I use this space to document
+              what I learn and reflect on my experiences as a developer.
+              I believe writing is one of the best ways to deepen understanding
+              and keep growing.
+            </p>
+            <p>
+              I have also contributed to <a href="#publications">research on
+              personalized low-carbon planning and wearable health sensing</a>,
+              including EcoTailor and CapWear.
+            </p>
+          </section>
+
+          <PublicationsSection />
+
+          <section className={styles.section} aria-labelledby="interests">
+            <Heading as="h2" id="interests" className={styles.sectionTitle}>Interests</Heading>
+            <ul className={styles.interests}>
+              {profile.interests.map((interest) => <li key={interest}>{interest}</li>)}
+            </ul>
+          </section>
+
+          <NewsSection />
+
+          <section className={styles.section} aria-labelledby="writing">
+            <Heading as="h2" id="writing" className={styles.sectionTitle}>Writing &amp; Notes</Heading>
+            <p>I write to make sense of what I learn and share it with others.</p>
+            <dl className={styles.writingList}>
+              <div>
+                <dt><Link to="/docs/intro">Documentation <span aria-hidden="true">→</span></Link></dt>
+                <dd>Technical notes and guides, organized for reference.</dd>
+              </div>
+              <div>
+                <dt><Link to="/blog">Blog <span aria-hidden="true">→</span></Link></dt>
+                <dd>Development experiences and reflections on learning.</dd>
+              </div>
+            </dl>
+          </section>
+        </article>
       </main>
     </Layout>
   );

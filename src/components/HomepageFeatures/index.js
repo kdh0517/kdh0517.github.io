@@ -5,21 +5,21 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     emoji: '\u{1F4DD}',
-    title: '기록하는 개발',
+    title: 'Learning through writing',
     description:
-      '배운 것을 문서로 정리하고, 나만의 지식 베이스를 쌓아갑니다. 기록은 가장 확실한 학습 방법입니다.',
+      'I document what I learn and build a personal knowledge base. Writing helps me deepen my understanding.',
   },
   {
     emoji: '\u{1F680}',
-    title: '꾸준한 성장',
+    title: 'Continuous growth',
     description:
-      '작은 것이라도 매일 조금씩 발전하는 것을 목표로 합니다. 블로그는 그 여정의 발자취입니다.',
+      'I aim to make a little progress every day. This blog is a record of that journey.',
   },
   {
     emoji: '\u{1F4E1}',
-    title: '지식 공유',
+    title: 'Sharing knowledge',
     description:
-      '삽질했던 경험, 해결했던 문제들을 공유합니다. 누군가에게 도움이 되는 글을 쓰고 싶습니다.',
+      'I share the problems I encounter and how I solve them, hoping these experiences will help others.',
   },
 ];
 
