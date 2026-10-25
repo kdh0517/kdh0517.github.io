@@ -1,6 +1,5 @@
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {news, profile} from '../data/profile';
 import {publications} from '../data/publications';
@@ -142,21 +141,6 @@ export default function Home() {
           </section>
 
           <NewsSection />
-
-          <section className={styles.section} aria-labelledby="writing">
-            <Heading as="h2" id="writing" className={styles.sectionTitle}>Writing &amp; Notes</Heading>
-            <p>I write to make sense of what I learn and share it with others.</p>
-            <dl className={styles.writingList}>
-              <div>
-                <dt><Link to="/docs/intro">Documentation <span aria-hidden="true">→</span></Link></dt>
-                <dd>Technical notes and guides, organized for reference.</dd>
-              </div>
-              <div>
-                <dt><Link to="/blog">Blog <span aria-hidden="true">→</span></Link></dt>
-                <dd>Development experiences and reflections on learning.</dd>
-              </div>
-            </dl>
-          </section>
         </article>
       </main>
     </Layout>

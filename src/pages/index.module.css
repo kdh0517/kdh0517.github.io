@@ -205,28 +205,6 @@
   margin-top: 4px;
 }
 
-.writingList {
-  display: grid;
-  gap: 18px;
-  margin: 20px 0 0;
-}
-
-.writingList dt {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.writingList dt span {
-  display: inline-block;
-  margin-left: 4px;
-}
-
-.writingList dd {
-  margin: 2px 0 0;
-  color: var(--site-text-secondary);
-  font-size: 0.9rem;
-}
-
 .newsList {
   margin: 0;
   padding: 0;
