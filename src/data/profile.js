@@ -4,9 +4,10 @@ export const profile = {
   role: 'Developer',
   location: 'South Korea',
   github: 'https://github.com/kdh0517',
+  linkedin: 'https://www.linkedin.com/in/donghyeon-kang-319025360/',
   // Add a real address to display an Email link in the sidebar.
   email: null,
-  interests: ['Web development', 'Software engineering'],
+  interests: ['Human–AI Collaboration', 'Sensing with Novel Form Factors'],
 };
 
 // Add updates as {date: '2026-03', text: 'Your update.'}.

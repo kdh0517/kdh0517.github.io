@@ -11,6 +11,7 @@ function Icon({name}) {
     location: <><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
     github: <><path d="M9 19c-4.3 1.3-4.3-2-6-2.5M15 22v-3.4a3 3 0 0 0-.8-2.4c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 18.5 7a4.3 4.3 0 0 0-.1-3.2S17.4 3.5 15 5a11 11 0 0 0-6 0C6.6 3.5 5.6 3.8 5.6 3.8A4.3 4.3 0 0 0 5.5 7a4.7 4.7 0 0 0-1.3 3.3c0 4.6 2.9 5.6 5.6 5.9a3 3 0 0 0-.8 2.4V22" /></>,
     email: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></>,
+    linkedin: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 10v7M11 17v-7m0 3a3 3 0 0 1 6 0v4" /><circle cx="7" cy="7" r=".5" /></>,
   };
 
   return (
@@ -37,6 +38,9 @@ function ProfileSidebar() {
         <ul className={styles.profileLinks}>
           <li><Icon name="location" /><span>{profile.location}</span></li>
           <li><Icon name="github" /><a href={profile.github}>GitHub</a></li>
+          {profile.linkedin && (
+            <li><Icon name="linkedin" /><a href={profile.linkedin}>LinkedIn</a></li>
+          )}
           {profile.email && (
             <li><Icon name="email" /><a href={`mailto:${profile.email}`}>Email</a></li>
           )}
@@ -105,7 +109,7 @@ function PublicationsSection() {
 
 export default function Home() {
   return (
-    <Layout title="About" description="DongHyeon Kang — developer and co-author of EcoTailor (PACM IMWUT 2026) and CapWear (ACM ISWC 2026). Publications and notes on learning and building.">
+    <Layout title="About" description="DongHyeon Kang — interested in human–AI collaboration and sensing technologies using novel form factors. Co-author of EcoTailor and CapWear.">
       <main className={styles.mainContainer}>
         <ProfileSidebar />
         <article className={styles.mainContent}>
@@ -116,11 +120,10 @@ export default function Home() {
               I enjoy learning, building, and sharing what I discover along the way.
             </p>
             <p>
-              My interests include <strong>web development</strong> and{' '}
-              <strong>software engineering</strong>. I use this space to document
-              what I learn and reflect on my experiences as a developer.
-              I believe writing is one of the best ways to deepen understanding
-              and keep growing.
+              I’m interested in <strong>human–AI collaboration</strong> and{' '}
+              <strong>sensing technologies that use novel form factors</strong>.
+              I use this space to share my work, document what I learn, and
+              reflect on my experiences.
             </p>
             <p>
               I have also contributed to <a href="#publications">research on
