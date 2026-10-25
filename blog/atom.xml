@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kang.me.kr/blog</id>
-    <title>DongHyeon Dev Blog</title>
+    <title>DongHyeon Kang Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kang.me.kr/blog"/>
-    <subtitle>DongHyeon Dev Blog</subtitle>
-    <icon>https://kang.me.kr/img/favicon.ico</icon>
+    <subtitle>DongHyeon Kang Blog</subtitle>
+    <icon>https://kang.me.kr/img/favicon.svg</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://kang.me.kr/blog/welcome</id>
